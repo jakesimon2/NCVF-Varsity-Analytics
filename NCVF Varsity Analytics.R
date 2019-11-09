@@ -10,8 +10,8 @@ percent_cap <- 1.00 # Write percent as a decimal.
 # region only includes schools from one region in the data (for all regions, region<-"All")
 region <- "SCCVL"
 # for regions with a lot of teams, you can start graphs from a certain observation
-startobs <- 11
-endobs <- 12
+startobs <- 1 # Any value <= 0 or greater than nrows(response_import) will be replaced with 1.
+endobs <- 99 # Type in any big number here if you want to all remaining observations read.
 # gender determines whether or not we will be analyzing men's or women's data
 gender <- "Women's"
 # determines which year's data is being analyzed and output
@@ -29,12 +29,13 @@ responses_import <- read_xlsx(paste0("~/Documents/NCVF Varsity Project/", year,
 if (region != "All") {
   responses_import <- responses_import[responses_import $ Conference == region, ]
 }
-if (startobs <= 0) { # shortens amount of observations measured in this run of graphs
+if (startobs <= 0 || startobs > nrow(responses_import)) {
   startobs <- 1
 }
 if (endobs > nrow(responses_import)) {
   endobs <- nrow(responses_import)
-}
+} 
+# shortens amount of observations measured in this run of graphs
 responses_import <- responses_import[startobs:endobs,]
 
 # Takes the schools out of the response data, so they can be used as row labels
