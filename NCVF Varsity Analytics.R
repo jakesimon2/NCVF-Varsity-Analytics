@@ -11,7 +11,7 @@ percent_cap <- 1.00 # Write percent as a decimal.
 region <- "SCCVL"
 # for regions with a lot of teams, you can start graphs from a certain observation
 startobs <- 1 # Any value <= 0 or greater than nrows(response_import) will be replaced with 1.
-endobs <- 99 # Type in any big number here if you want to all remaining observations read.
+endobs <- 99 # Type a really big number here if you want to all remaining observations read.
 # gender determines whether or not we will be analyzing men's or women's data
 gender <- "Women's"
 # determines which year's data is being analyzed and output
