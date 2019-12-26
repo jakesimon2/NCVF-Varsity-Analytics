@@ -13,7 +13,7 @@ region <- "SCCVL"
 startobs <- 1 # Any value <= 0 or greater than nrows(response_import) will be replaced with 1.
 endobs <- 99 # Type a really big number here if you want to all remaining observations read.
 # gender determines whether or not we will be analyzing men's or women's data
-gender <- "Women's"
+gender <- "Men's"
 # determines which year's data is being analyzed and output
 year <- "2020"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,7 +34,7 @@ if (startobs <= 0 || startobs > nrow(responses_import)) {
 }
 if (endobs > nrow(responses_import)) {
   endobs <- nrow(responses_import)
-} 
+}
 # shortens amount of observations measured in this run of graphs
 responses_import <- responses_import[startobs:endobs,]
 
@@ -514,13 +514,13 @@ for (i in 1:length(table_3b)) {
   expected_value_open_teams <- expected_value_open_teams + 
     (i-1) * (as.numeric(table_3b[i]) / sum(as.numeric(table_3b)))
 } # calculates expected value for # of Open teams
-opinion_questions[9] <- expected_value_open_teams
+opinion_questions[9] <- round(expected_value_open_teams, 1)
 opinion_questions[10] <- perc4a[1] / 100
 opinion_questions[11] <- perc4a[2] / 100
-opinion_names <- list("Region", "Gender", "Yes % for Open division", "No % for Open division",
-                      "0 Open Teams", "1 Open Team", "2 Open Teams", "3+ Open Teams", 
-                      "Expected # Open Teams", "Yes % for CC Players Being Varsity", 
-                      "No % for CC Players Being Varsity")
+opinion_names <- list("Region", "Gender", "Yes Perc for Open division", "No Perc for Open division",
+                      "Open Teams 0", "Open Teams 1", "Open Teams 2", "Open Teams 3 or more", 
+                      "Expected Value Open Teams", "Yes Perc for CC Players Being Varsity", 
+                      "No Perc for CC Players Being Varsity")
 names(opinion_questions) <- opinion_names
 write.csv(opinion_questions, paste0("~/Documents/NCVF Varsity Project/", year, "/",
                                     region, " ", gender, " Opinion Data.csv"))
