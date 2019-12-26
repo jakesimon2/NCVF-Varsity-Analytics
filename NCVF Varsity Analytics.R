@@ -13,7 +13,7 @@ region <- "SCCVL"
 startobs <- 1 # Any value <= 0 or greater than nrows(response_import) will be replaced with 1.
 endobs <- 99 # Type a really big number here if you want to all remaining observations read.
 # gender determines whether or not we will be analyzing men's or women's data
-gender <- "Men's"
+gender <- "Women's"
 # determines which year's data is being analyzed and output
 year <- "2020"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -23,7 +23,7 @@ library(readxl)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Names of the schools (rows for the chart)
 responses_import <- read_xlsx(paste0("~/Documents/NCVF Varsity Project/", year,
-                                     "/Club Volleyball Varsity Interest.xlsx"), 
+                                     "/Club Volleyball Varsity Interest ", year, ".xlsx"), 
                                      sheet = gender)
 # Excludes schools that are not apart of the chosen region
 if (region != "All") {
